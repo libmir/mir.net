@@ -16,6 +16,7 @@ namespace Mir.Test
         // Each MirWrapper based class with public/internal Impl struct should define such constructor.
         public Example1(Impl impl) : base (impl) {}
 
+        [StructLayout(LayoutKind.Sequential)]
         public struct Impl
         {
             // Native C# type
