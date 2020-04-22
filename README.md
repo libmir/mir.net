@@ -20,7 +20,7 @@ Mir types can be composed using other Mir types and C# POD types that doesn't re
 
 The library is used in a large private codebase.
 
-MTS for D and C++ can is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
+MTS for D and C++ is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
 
 ## Table of correspondence
 
@@ -36,7 +36,7 @@ MTS for D and C++ can is provided via [Mir Algorithm](https://github.com/libmir/
 | [SmallString](http://mir-algorithm.libmir.org/mir_small_string.html)!N | `SmallStringN`, N=4,31,32,64,128 |  `mir::SmallString<N>` |
 | [Series](http://mir-algorithm.libmir.org/mir_series.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!([RCArray](http://mir-algorithm.libmir.org/mir_rc_array.html)!(const char)), [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `StringSeries<Value>` |  `mir_series<mir_rci<mir_rcarray<const char>>, mir_rci<Value>>` |
 
- `Name<... , @>` ×2 - means a type has two instations, `Name<... >` and `Name<... , Impl>`, where `Impl`
+ `Name<... , @>` ×2 - means a type has two declarations, `Name<... >` and `Name<... , Impl>`, where `Impl`
  is an unmanaged C# handle structure that describes non-POD Composed Mir Type.
  
 Composed Mir Type (CMT) is a type that is composed of CMT fields, first order Mir RefCounted fields, and POD(unmanaged) fields.
