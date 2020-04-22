@@ -32,9 +32,9 @@ MTS for D and C++ can is provided via [Mir Algorithm](https://github.com/libmir/
 | [Slice](http://mir-algorithm.libmir.org/mir_ndslice_slice.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Type) | `Slice<Type>` ×2 |  `mir_slice<mir_rci<Type>>` |
 | [Slice](http://mir-algorithm.libmir.org/mir_ndslice_slice.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Type, 2) | `Matrix<Type>` ×2 |  `mir_slice<mir_rci<Type>, 2>` |
 | [Slice](http://mir-algorithm.libmir.org/mir_ndslice_slice.html)!(Type*) | `SliceView<Type, @>` ×2 |  `mir_slice<Type*>` |
-| [Series](http://mir-algorithm.libmir.org/mir_ndslice_slice.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Key, [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `Series<Key, Value, @>` ×2 |  `mir_series<mir_rci<Key>, mir_rci<Value>>` |
+| [Series](http://mir-algorithm.libmir.org/mir_series.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Key, [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `Series<Key, Value, @>` ×2 |  `mir_series<mir_rci<Key>, mir_rci<Value>>` |
 | [SmallString](http://mir-algorithm.libmir.org/mir_small_string.html)!N | `SmallStringN`, N=4,31,32,64,128 |  `mir::SmallString<N>` |
-| [Series](http://mir-algorithm.libmir.org/mir_ndslice_slice.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!([RCArray](http://mir-algorithm.libmir.org/mir_rc_array.html)!(const char)), [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `StringSeries<Value>` |  `mir_series<mir_rci<mir_rcarray<const char>>, mir_rci<Value>>` |
+| [Series](http://mir-algorithm.libmir.org/mir_series.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!([RCArray](http://mir-algorithm.libmir.org/mir_rc_array.html)!(const char)), [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `StringSeries<Value>` |  `mir_series<mir_rci<mir_rcarray<const char>>, mir_rci<Value>>` |
 
  `Name<... , @>` ×2 - means a type has two instations, `Name<... >` and `Name<... , Impl>`, where `Impl`
  is an unmanaged C# handle structure that describes non-POD Composed Mir Type.
