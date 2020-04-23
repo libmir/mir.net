@@ -4,6 +4,9 @@
     <TargetFrameworks>net472;netcoreapp2.1;netcoreapp2.2</TargetFrameworks>
     <IsTestProject>true</IsTestProject>
     <WarningsAsErrors />
+    <PackageLicenseExpression>BSL-1.0</PackageLicenseExpression>
+    <Authors>9il;Richard Manthorpe</Authors>
+    <!-- 9il = Ilya Yaroshenko -->
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mir\Mir.csproj" />
