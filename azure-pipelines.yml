@@ -16,6 +16,7 @@ steps:
     command: build
     projects: 'Mir/Mir.csproj'
 - task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
     command: test
     projects: 'Mir.Tests/Mir.Tests.csproj'
