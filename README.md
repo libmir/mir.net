@@ -5,8 +5,8 @@
 ### Features
 
  - Fast generic types and handles that are easy to construct, use, and pass between managed and unmanaged code.
- - Faster then Protocol Buffers as well as any other serialization library because it is complitely zero-copy.
- - Requires at least twice less user code comparing with Protocol Buffers.
+ - Faster than Protocol Buffers as well as any other serialization library because it is completely zero-copy.
+ - Requires around half the user code compared to Protocol Buffers.
  - D and C++ implementations are provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/)
  - D, C++, and C# MTS implementations are self-contained. C# implementation requires neither Mir Algorithm nor D/C/C++ runtimes.
  - Hands-free. Just construct, pass, and forget. Mir objects hold all required information to destroy them and free memory.
