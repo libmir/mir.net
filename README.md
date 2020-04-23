@@ -50,6 +50,6 @@ Mir types can be composed using other Mir types and C# POD types that don't requ
  `Name<... , @>` ×2 - means a type has two declarations, `Name<... >` and `Name<... , Impl>`, where `Impl`
  is an unmanaged C# handle structure that describes non-POD Mir Type.
  
-Composed Mir Type (CMT) is a type that is composed of CMT fields, first order Mir RefCounted fields, and POD(unmanaged) fields.
+Composed Mir Type (CMT) is a type that is composed of CMT fields, library RefCounted fields, and POD structures and types.
 
 Unmanaged C# handles should use `byte` instead of `bool`.
