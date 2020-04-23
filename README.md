@@ -4,7 +4,11 @@
 
 Mir Type System (MTS) provides fast generic types and handles that are easy to construct, use and pass between managed and unmanaged code.
 
-MTS is faster then protobuffer as well as any other serialization librariry because it is 100% zero copy. MTS requires at least twice less code comparing with Protobuffer.
+MTS is faster then Protocol Buffers as well as any other serialization librariry because it is 100% zero copy.
+
+MTS requires at least twice less code comparing with Protocol Buffers.
+
+## [Install with nuget](https://www.nuget.org/packages/Mir)
 
 ## Basic Types
 
