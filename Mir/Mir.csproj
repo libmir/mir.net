@@ -1,10 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <PackageDescription>Fast generic types and handles that are easy to construct, use and pass between managed and unmanaged code.</PackageDescription>
     <ProjectGuid>{80CAB159-9AB2-4D34-9378-DD1164485E4E}</ProjectGuid>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageLicenseExpression>BSL-1.0</PackageLicenseExpression>
     <Authors>9il;Richard Manthorpe</Authors>
+    <RepositoryUrl>https://github.com/libmir/mir.net</RepositoryUrl>
     <!-- 9il = Ilya Yaroshenko -->
   </PropertyGroup>
   <ItemGroup>
