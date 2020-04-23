@@ -8,6 +8,12 @@ MTS is faster then Protocol Buffers as well as any other serialization librariry
 
 MTS requires at least twice less code comparing with Protocol Buffers.
 
+The library is used in a large private codebase.
+
+MTS for D and C++ is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
+
+D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes. 
+
 ## [Install with nuget](https://www.nuget.org/packages/Mir)
 
 ## Basic Types
@@ -20,13 +26,11 @@ MTS requires at least twice less code comparing with Protocol Buffers.
  - Shared Pointers with inheritance
  - POD small strings
 
-Mir types can be composed using other Mir types and C# POD types that doesn't require special marshalling.
+## Composed user-defined types
 
-The library is used in a large private codebase.
+Mir types can be composed using other Mir types and C# POD types that doesn't require special marshalling. `MirWrapper` is a base class for all non-POD library and user-defined Mir types. It requires the structure payload (`Impl`) to be defined.
 
-MTS for D and C++ is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
-
-D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes. 
+`MirPtr` and `MirSlimPtr` can be used to wrap a native type without defining its structure payload in C#.
 
 ## Table of correspondence
 
@@ -45,7 +49,7 @@ D, C++, and C# MTS implementations are self-contained. C# implementation doesn't
 | [Series](http://mir-algorithm.libmir.org/mir_series.html)!([RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!([RCArray](http://mir-algorithm.libmir.org/mir_rc_array.html)!(const char)), [RCI](http://mir-algorithm.libmir.org/mir_rc_array.html#.mir_rci)!Value) | `StringSeries<Value>` |  `mir_series<mir_rci<mir_rcarray<const char>>, mir_rci<Value>>` |
 
  `Name<... , @>` ×2 - means a type has two declarations, `Name<... >` and `Name<... , Impl>`, where `Impl`
- is an unmanaged C# handle structure that describes non-POD Composed Mir Type.
+ is an unmanaged C# handle structure that describes non-POD Mir Type.
  
 Composed Mir Type (CMT) is a type that is composed of CMT fields, first order Mir RefCounted fields, and POD(unmanaged) fields.
 
