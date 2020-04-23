@@ -22,6 +22,8 @@ The library is used in a large private codebase.
 
 MTS for D and C++ is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
 
+D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes. 
+
 ## Table of correspondence
 
 | D Type | C# Type | C++ Type |
