@@ -1,18 +1,17 @@
 # mir.net
 
-.NET Implementation of Mir Ref-Counted Type System
+.NET Implementation of Mir Ref-Counted Type System (MTS)
 
-Mir Type System (MTS) provides fast generic types and handles that are easy to construct, use and pass between managed and unmanaged code.
+### Features
 
-MTS is faster then Protocol Buffers as well as any other serialization librariry because it is 100% zero copy.
-
-MTS requires at least twice less code comparing with Protocol Buffers.
-
+ - Fast generic types and handles that are easy to construct, use and pass between managed and unmanaged code.
+ - Faster then Protocol Buffers as well as any other serialization librariry because it is 100% zero copy.
+ - Requires at least twice less user code comparing with Protocol Buffers.
+ - D and C++ implementations are provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/)
+ - D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes.
+ - Hands free. Just construct, pass and forget. Mir types hold all required information to destroy them and free memory.
+ 
 The library is used in a large private codebase.
-
-MTS for D and C++ is provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/).
-
-D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes. 
 
 ## [Install with nuget](https://www.nuget.org/packages/Mir)
 
