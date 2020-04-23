@@ -13,7 +13,7 @@
  
 The library is used in a large private codebase.
 
-## [Install with nuget](https://www.nuget.org/packages/Mir)
+## [Install with NuGet](https://www.nuget.org/packages/Mir)
 
 ## Basic Types
 
@@ -27,7 +27,7 @@ The library is used in a large private codebase.
 
 ## Composed user-defined types
 
-Mir types can be composed using other Mir types and C# POD types that doesn't require special marshalling. `MirWrapper` is a base class for all non-POD library and user-defined Mir types. It requires the structure payload (`Impl`) to be defined.
+Mir types can be composed using other Mir types and C# POD types that don't require special marshaling. `MirWrapper` is a base class for all non-POD library and user-defined Mir types. It requires the structure payload (`Impl`) to be defined.
 
 `MirPtr` and `MirSlimPtr` can be used to wrap a native type without defining its structure payload in C#.
 
