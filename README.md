@@ -26,6 +26,8 @@ D, C++, and C# MTS implementations are self-contained. C# implementation doesn't
 
 ## Table of correspondence
 
+(check the source repository if the table isn't rendered correctly because of the [nuget issue](https://github.com/NuGet/NuGetGallery/issues/7035))
+
 | D Type | C# Type | C++ Type |
 |---|----|-----|
 | [SlimRCPtr](http://mir-algorithm.libmir.org/mir_rc_slim_ptr.html)!Type | `MirSlimPtr<Type>` |  `mir_slim_rcptr<Type>` |

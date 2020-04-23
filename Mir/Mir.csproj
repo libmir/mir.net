@@ -5,11 +5,11 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <PackageLicenseExpression>BSL-1.0</PackageLicenseExpression>
-    <Authors>9il;Richard Manthorpe</Authors>
+    <Authors>Ilya Yaroshenko; Richard Manthorpe</Authors>
     <RepositoryUrl>https://github.com/libmir/mir.net</RepositoryUrl>
     <IsPackable>true</IsPackable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!-- 9il = Ilya Yaroshenko -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="System.Memory" Version="4.5" />
