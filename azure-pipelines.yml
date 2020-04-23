@@ -19,3 +19,4 @@ steps:
   inputs:
     command: test
     projects: '**/*Tests/*.csproj'
+    arguments: '-f netcoreapp2.1 --collect "Code coverage"'
