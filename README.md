@@ -9,7 +9,7 @@
  - Requires at least twice less user code comparing with Protocol Buffers.
  - D and C++ implementations are provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/)
  - D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes.
- - Hands free. Just construct, pass and forget. Mir types hold all required information to destroy them and free memory.
+ - Hands free. Just construct, pass and forget. Mir objects hold all required information to destroy them and free memory.
  
 The library is used in a large private codebase.
 
