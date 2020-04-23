@@ -14,9 +14,9 @@ steps:
   displayName: Build
   inputs:
     command: build
-    projects: '**/*.csproj'
+    projects: 'Mir/Mir.csproj'
 - task: DotNetCoreCLI@2
   inputs:
     command: test
-    projects: '**/*Tests/*.csproj'
+    projects: 'Mir.Tests/Mir.Tests.csproj'
     arguments: '-f netcoreapp2.1 --collect "Code coverage"'
