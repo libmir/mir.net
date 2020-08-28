@@ -4,16 +4,16 @@
 
 ### Features
 
- - Fast generic types and handles that are easy to construct, use and pass between managed and unmanaged code.
- - Faster then Protocol Buffers as well as any other serialization librariry because it is 100% zero copy.
- - Requires at least twice less user code comparing with Protocol Buffers.
+ - Fast generic types that are easy to construct, use, and pass between managed and unmanaged code.
+ - Faster than Protocol Buffers as well as any other serialization library because it is completely zero-copy.
+ - Requires around half the user code compared to Protocol Buffers.
  - D and C++ implementations are provided via [Mir Algorithm](https://github.com/libmir/mir-algorithm/)
- - D, C++, and C# MTS implementations are self-contained. C# implementation doesn't require neither Mir Algorithm nor D/C/C++ runtimes.
- - Hands free. Just construct, pass and forget. Mir objects hold all required information to destroy them and free memory.
+ - D, C++, and C# MTS implementations are self-contained. C# implementation requires neither Mir Algorithm nor D/C/C++ runtimes.
+ - Hands-free. Just construct, pass, and forget. Mir objects hold all required information to destroy them and free memory.
  
 The library is used in a large private codebase.
 
-## [Install with nuget](https://www.nuget.org/packages/Mir)
+## [Install with NuGet](https://www.nuget.org/packages/Mir)
 
 ## Basic Types
 
@@ -27,7 +27,7 @@ The library is used in a large private codebase.
 
 ## Composed user-defined types
 
-Mir types can be composed using other Mir types and C# POD types that doesn't require special marshalling. `MirWrapper` is a base class for all non-POD library and user-defined Mir types. It requires the structure payload (`Impl`) to be defined.
+Mir types can be composed using other Mir types and C# POD types that don't require special marshaling. `MirWrapper` is a base class for all non-POD library and user-defined Mir types. It requires the structure payload (`Impl`) to be defined.
 
 `MirPtr` and `MirSlimPtr` can be used to wrap a native type without defining its structure payload in C#.
 
@@ -50,6 +50,6 @@ Mir types can be composed using other Mir types and C# POD types that doesn't re
  `Name<... , @>` ×2 - means a type has two declarations, `Name<... >` and `Name<... , Impl>`, where `Impl`
  is an unmanaged C# handle structure that describes non-POD Mir Type.
  
-Composed Mir Type (CMT) is a type that is composed of CMT fields, first order Mir RefCounted fields, and POD(unmanaged) fields.
+Composed Mir Type (CMT) is a type that is composed of CMT fields, library RefCounted fields, and POD structures and types.
 
 Unmanaged C# handles should use `byte` instead of `bool`.
