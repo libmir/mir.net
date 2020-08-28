@@ -12,8 +12,8 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5" />
-    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.7" />
+    <PackageReference Include="System.Memory" Version="4.*" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.*" />
   </ItemGroup>
   <PropertyGroup>
       <Copyright>Copyright © 2020 Symmetry Investments and Kaleidic Associates</Copyright>
