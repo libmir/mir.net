@@ -4,6 +4,184 @@ using System.Runtime.InteropServices;
 namespace Mir
 {
     [StructLayout(LayoutKind.Sequential)]
+    public struct SmallString2 : IComparable<SmallString2>, IEquatable<SmallString2>
+    {
+        private const int MaxLength = 2;
+        private unsafe fixed byte payload_[MaxLength];
+
+        public unsafe SmallString2(string value)
+        {
+            fixed (byte* n = payload_)
+                SmallStringMethods.FromString(n, MaxLength, value);
+        }
+
+        public static implicit operator SmallString2(string s)
+        {
+            return new SmallString2(s);
+        }
+
+        public static implicit operator string(in SmallString2 s)
+        {
+            return s.ToString();
+        }
+
+        public static unsafe implicit operator bool(in SmallString2 value)
+        {
+            fixed (byte* n = value.payload_)
+                return !SmallStringMethods.IsNull(n, MaxLength);
+        }
+
+        public static unsafe bool TryConvert(string value, out SmallString2 s)
+        {
+            fixed (byte* n = s.payload_)
+                return SmallStringMethods.TryFromString(n, MaxLength, value);
+        }
+
+        /* Implements the same order as in D */
+        public unsafe int CompareTo(SmallString2 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.Compare(n, m, MaxLength);
+        }
+
+        public unsafe bool Equals(SmallString2 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.Equals(n, m, MaxLength);
+        }
+
+        public static bool operator ==(in SmallString2 lhs, in SmallString2 rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(in SmallString2 lhs, in SmallString2 rhs)
+        {
+            return !lhs.Equals(rhs);
+        }
+
+        public unsafe bool EqualsIgnoreCase(SmallString2 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.EqualsIgnoreCase(n, m, MaxLength);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+                return false;
+            if (obj.GetType() == GetType())
+                return Equals((SmallString2) obj);
+            if (obj.GetType() == "".GetType())
+                return (string) this == (string) obj;
+            return false;
+        }
+
+        public override unsafe string ToString()
+        {
+            fixed (byte* n = payload_)
+                return SmallStringMethods.ToString(n, MaxLength);
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
+    public struct SmallString3 : IComparable<SmallString3>, IEquatable<SmallString3>
+    {
+        private const int MaxLength = 3;
+        private unsafe fixed byte payload_[MaxLength];
+
+        public unsafe SmallString3(string value)
+        {
+            fixed (byte* n = payload_)
+                SmallStringMethods.FromString(n, MaxLength, value);
+        }
+
+        public static implicit operator SmallString3(string s)
+        {
+            return new SmallString3(s);
+        }
+
+        public static implicit operator string(in SmallString3 s)
+        {
+            return s.ToString();
+        }
+
+        public static unsafe implicit operator bool(in SmallString3 value)
+        {
+            fixed (byte* n = value.payload_)
+                return !SmallStringMethods.IsNull(n, MaxLength);
+        }
+
+        public static unsafe bool TryConvert(string value, out SmallString3 s)
+        {
+            fixed (byte* n = s.payload_)
+                return SmallStringMethods.TryFromString(n, MaxLength, value);
+        }
+
+        /* Implements the same order as in D */
+        public unsafe int CompareTo(SmallString3 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.Compare(n, m, MaxLength);
+        }
+
+        public unsafe bool Equals(SmallString3 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.Equals(n, m, MaxLength);
+        }
+
+        public static bool operator ==(in SmallString3 lhs, in SmallString3 rhs)
+        {
+            return lhs.Equals(rhs);
+        }
+
+        public static bool operator !=(in SmallString3 lhs, in SmallString3 rhs)
+        {
+            return !lhs.Equals(rhs);
+        }
+
+        public unsafe bool EqualsIgnoreCase(SmallString3 rhs)
+        {
+            byte* m = rhs.payload_;
+            fixed (byte* n = payload_)
+                return SmallStringMethods.EqualsIgnoreCase(n, m, MaxLength);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is null)
+                return false;
+            if (obj.GetType() == GetType())
+                return Equals((SmallString3) obj);
+            if (obj.GetType() == "".GetType())
+                return (string) this == (string) obj;
+            return false;
+        }
+
+        public override unsafe string ToString()
+        {
+            fixed (byte* n = payload_)
+                return SmallStringMethods.ToString(n, MaxLength);
+        }
+
+        public override int GetHashCode()
+        {
+            return ToString().GetHashCode();
+        }
+    }
+
+    [StructLayout(LayoutKind.Sequential)]
     public struct SmallString4 : IComparable<SmallString4>, IEquatable<SmallString4>
     {
         private const int MaxLength = 4;
