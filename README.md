@@ -15,6 +15,12 @@ The library is used in a large private codebase.
 
 ## [Install with NuGet](https://www.nuget.org/packages/Mir)
 
+Or build NuGet package your self.
+
+```
+dotnet pack --configuration Release
+```
+
 ## Basic Types
 
  - Array

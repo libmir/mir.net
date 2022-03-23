@@ -27,6 +27,14 @@ namespace Mir
             return new MirArray<T>(collection);
         }
 
+        public static MirArray<T, Native.Handle.RCArray> ToMirArrayOfArrays<T>(this IReadOnlyCollection<T> collection)
+            where T : MirArrayBase<T>
+        {
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
+            return new MirArray<T, Native.Handle.RCArray>(collection);
+        }
+
         public static MirArray<T, Native.Handle.RCPtr> ToMirArrayOfPointers<T>(this IReadOnlyCollection<T> collection)
             where T : MirPtr<T>
         {
