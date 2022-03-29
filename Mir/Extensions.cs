@@ -6,6 +6,39 @@ using System.Text;
 
 namespace Mir
 {
+    public static class MirExtensionMethods_ArrayOfArrays
+    {
+        public static MirArray<T, Native.Handle.RCArray> ToMirArray<T>(this IReadOnlyCollection<T> collection)
+            where T : MirWrapper<Native.Handle.RCArray>
+        {
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
+            return new MirArray<T, Native.Handle.RCArray>(collection);
+        }
+    }
+
+    public static class MirExtensionMethods_ArrayOfPointers
+    {
+        public static MirArray<T, Native.Handle.RCPtr> ToMirArray<T>(this IReadOnlyCollection<T> collection)
+            where T : MirPtr<T>
+        {
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
+            return new MirArray<T, Native.Handle.RCPtr>(collection);
+        }
+    }
+
+    public static class MirExtensionMethods_ArrayOfSlimPointers
+    {
+        public static MirArray<T, Native.Handle.SlimRCPtr> ToMirArray<T>(this IReadOnlyCollection<T> collection)
+            where T : MirSlimPtr<T>
+        {
+            if (collection is null)
+                throw new ArgumentNullException(nameof(collection));
+            return new MirArray<T, Native.Handle.SlimRCPtr>(collection);
+        }
+    }
+
     public static class MirExtensionMethods
     {
         public static T UnsafeMoveFrom<T, I>(ref I handle)
@@ -27,28 +60,18 @@ namespace Mir
             return new MirArray<T>(collection);
         }
 
-        public static MirArray<T, Native.Handle.RCArray> ToMirArrayOfArrays<T>(this IReadOnlyCollection<T> collection)
-            where T : MirArrayBase<T>
-        {
-            if (collection is null)
-                throw new ArgumentNullException(nameof(collection));
-            return new MirArray<T, Native.Handle.RCArray>(collection);
-        }
-
+        [Obsolete("ToMirArrayOfPointers is deprecated, please use ToMirArray instead.")]
         public static MirArray<T, Native.Handle.RCPtr> ToMirArrayOfPointers<T>(this IReadOnlyCollection<T> collection)
             where T : MirPtr<T>
         {
-            if (collection is null)
-                throw new ArgumentNullException(nameof(collection));
-            return new MirArray<T, Native.Handle.RCPtr>(collection);
+            return collection.ToMirArray();
         }
 
+        [Obsolete("ToMirArrayOfSlimPointers is deprecated, please use ToMirArray instead.")]
         public static MirArray<T, Native.Handle.SlimRCPtr> ToMirArrayOfSlimPointers<T>(this IReadOnlyCollection<T> collection)
             where T : MirSlimPtr<T>
         {
-            if (collection is null)
-                throw new ArgumentNullException(nameof(collection));
-            return new MirArray<T, Native.Handle.SlimRCPtr>(collection);
+            return collection.ToMirArray();
         }
 
         public static Slice<T> ToSlice<T>(this IReadOnlyCollection<T> collection)
