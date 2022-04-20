@@ -29,4 +29,13 @@ namespace Mir.Interpolate
         public SplineBoundaryType Type;
         public double Value;
     }
+
+    [StructLayout(LayoutKind.Sequential)]
+    struct SplineConfiguration
+    {
+        SplineType Kind;
+        SplineBoundaryCondition LeftBoundary;
+        SplineBoundaryCondition RightBoundary;
+        double Param;
+    }
 }
