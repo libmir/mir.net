@@ -20,6 +20,6 @@
       <Product>Mir</Product>
       <Title>Mir</Title>
       <PackageId>Mir</PackageId>
-      <Version>1.0.8</Version>
+      <Version>1.0.9</Version>
   </PropertyGroup>
 </Project>
