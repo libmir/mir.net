@@ -10,6 +10,7 @@ namespace Mir.Interpolate
         Monotone,
         DoubleQuadratic,
         Akima,
+        Makima,
     }
 
     public enum SplineBoundaryType
@@ -21,6 +22,7 @@ namespace Mir.Interpolate
         Parabolic,
         Monotone,
         Akima,
+        Makima,
     }
 
     [StructLayout(LayoutKind.Sequential)]
