@@ -636,7 +636,7 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                n[count] = 0;
+                if (count < MaxLength) n[count] = 0;
             }
         }
 
@@ -648,7 +648,7 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                n[count] = 0;
+                if (count < MaxLength) n[count] = 0;
             }
             return true;
         }
