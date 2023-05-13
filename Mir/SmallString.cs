@@ -628,22 +628,28 @@ namespace Mir
 
     public static class SmallStringMethods
     {
-        // NOTE: doesn't fill tail with zeros.
+        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe void FromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
                 throw new ArgumentException($"SmallString{MaxLength} '{value}': Too long (max {MaxLength} characters)");
             fixed (char* c = value) //Throws if can't fit value into n
-                System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
+            {
+                var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
+                if (count < MaxLength) n[count] = 0;
+            }
         }
 
-        // NOTE: doesn't fill tail with zeros.
+        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe bool TryFromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
                 return false;
             fixed (char* c = value) //Throws if can't fit value into n
-                System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
+            {
+                var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
+                if (count < MaxLength) n[count] = 0;
+            }
             return true;
         }
 
