@@ -628,7 +628,6 @@ namespace Mir
 
     public static class SmallStringMethods
     {
-        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe void FromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
@@ -636,11 +635,13 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                if (count < MaxLength) n[count] = 0;
+                for (var idx = count; idx < MaxLength; idx++)
+                {
+                    n[idx] = 0;
+                }
             }
         }
 
-        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe bool TryFromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
@@ -648,7 +649,10 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                if (count < MaxLength) n[count] = 0;
+                for (var idx = count; idx < MaxLength; idx++)
+                {
+                    n[idx] = 0;
+                }
             }
             return true;
         }
@@ -680,6 +684,17 @@ namespace Mir
                 if (n[i] != m[i])
                     return false;
             }
+
+            // Check for SmallString2, 3, 31, etc.
+            if (MaxLength % 8 != 0)
+            {
+                for (var i = (len * 8); i < MaxLength; i++)
+                {
+                    if (n[i] != m[i])
+                        return false;
+                }
+            }
+
             return true;
         }
 
