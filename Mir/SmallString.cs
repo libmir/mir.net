@@ -9,6 +9,12 @@ namespace Mir
         private const int MaxLength = 2;
         private unsafe fixed byte payload_[MaxLength];
 
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
+
         public unsafe SmallString2(string value)
         {
             fixed (byte* n = payload_)
@@ -97,6 +103,12 @@ namespace Mir
     {
         private const int MaxLength = 3;
         private unsafe fixed byte payload_[MaxLength];
+
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
 
         public unsafe SmallString3(string value)
         {
@@ -187,6 +199,12 @@ namespace Mir
         private const int MaxLength = 4;
         private unsafe fixed byte payload_[MaxLength];
 
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
+
         public unsafe SmallString4(string value)
         {
             fixed (byte* n = payload_)
@@ -275,6 +293,12 @@ namespace Mir
     {
         private const int MaxLength = 31;
         private unsafe fixed byte payload_[MaxLength];
+
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
 
         public unsafe SmallString31(string value)
         {
@@ -365,6 +389,12 @@ namespace Mir
         private const int MaxLength = 32;
         private unsafe fixed byte payload_[MaxLength];
 
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
+
         public unsafe SmallString32(string value)
         {
             fixed (byte* n = payload_)
@@ -453,6 +483,12 @@ namespace Mir
     {
         private const int MaxLength = 64;
         private unsafe fixed byte payload_[MaxLength];
+
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
 
         public unsafe SmallString64(string value)
         {
@@ -543,6 +579,12 @@ namespace Mir
         private const int MaxLength = 128;
         private unsafe fixed byte payload_[MaxLength];
 
+        public unsafe byte[] PayloadCopy()
+        {
+            fixed (byte* p = payload_)
+                return SmallStringMethods.GetPayloadAsByteArray(p, MaxLength);
+        }
+
         public unsafe SmallString128(string value)
         {
             fixed (byte* n = payload_)
@@ -628,7 +670,6 @@ namespace Mir
 
     public static class SmallStringMethods
     {
-        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe void FromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
@@ -636,11 +677,13 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                if (count < MaxLength) n[count] = 0;
+                for (var idx = count; idx < MaxLength; idx++)
+                {
+                    n[idx] = 0;
+                }
             }
         }
 
-        // NOTE: doesn't fill tail with zeros, but puts one terminating zero at the end.
         public static unsafe bool TryFromString(byte* n, int MaxLength, string value)
         {
             if (value.Length > MaxLength)
@@ -648,7 +691,10 @@ namespace Mir
             fixed (char* c = value) //Throws if can't fit value into n
             {
                 var count = System.Text.Encoding.UTF8.GetBytes(c, value.Length, n, MaxLength);
-                if (count < MaxLength) n[count] = 0;
+                for (var idx = count; idx < MaxLength; idx++)
+                {
+                    n[idx] = 0;
+                }
             }
             return true;
         }
@@ -680,6 +726,17 @@ namespace Mir
                 if (n[i] != m[i])
                     return false;
             }
+
+            // Check for SmallString2, 3, 31, etc.
+            if (MaxLength % 8 != 0)
+            {
+                for (var i = (len * 8); i < MaxLength; i++)
+                {
+                    if (n[i] != m[i])
+                        return false;
+                }
+            }
+
             return true;
         }
 
@@ -713,6 +770,13 @@ namespace Mir
         public static unsafe string ToString(byte* n, int MaxLength)
         {
             return System.Text.Encoding.UTF8.GetString(n, StrLen(n, MaxLength));
+        }
+
+        public static unsafe byte[] GetPayloadAsByteArray(byte* p, int MaxLength)
+        {
+            byte[] result = new byte[MaxLength];
+            Marshal.Copy((IntPtr)p, result, 0, MaxLength);
+            return result;
         }
     }
 }
