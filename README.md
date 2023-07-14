@@ -17,7 +17,8 @@ The library is used in a large private codebase.
 
 Or build NuGet package your self.
 
-```
+```sh
+cd Mir
 dotnet pack --configuration Release
 ```
 
