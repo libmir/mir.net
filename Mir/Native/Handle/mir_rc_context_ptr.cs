@@ -62,9 +62,9 @@ namespace Mir.Native.Handle
                 if (Context.counter != default(UIntPtr))
                 {
                     if (sizeof(UIntPtr) == 8)
-                        Interlocked.Increment(ref *(int*)(Payload + 16));
+                        Interlocked.Increment(ref *(long*)(Payload + 16));
                     else
-                        Interlocked.Increment(ref *(long*)(Payload + 8));
+                        Interlocked.Increment(ref *(int*)(Payload + 8));
                 }
             }
         }
